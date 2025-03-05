@@ -1,0 +1,28 @@
+.socialLinksWrapper{
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    gap:1rem;
+}
+.socialLink{
+    align-items: center;
+    color:var(--purple-secondary);
+    display:flex;
+    flex-direction: column;
+    gap:1rem;
+    padding: 4rem 0;
+    text-decoration: none;
+    width:100%;
+}
+.socialLink:hover{
+    background: var(--purple-secondary);
+    color:var(--white-primary);
+    transition: all 500ms ease;
+}
+.socialLink img{
+    width:3rem;
+}
+@media (min-width:240px) and (max-width:900px){
+    .socialLinksWrapper{
+        grid-template-columns: 1fr;
+    }
+}

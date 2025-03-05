@@ -1,0 +1,9 @@
+.footerWrapper{
+    background: var(--black-primary);
+    color:var(--white-primary);
+    padding: 1.5rem 0;
+    text-align: center;
+}
+.footerWrapper a{
+    color: var(--white-primary);
+}

@@ -1,0 +1,43 @@
+/*font*/
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+/*reset css*/
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+}
+body{
+  font-family: "Quicksand", serif;
+  font-weight: 500;
+}
+/*ui colors*/
+:root{
+  --black-primary:#070707;
+  --blue-primary:#060e86;
+  --box-shadow:#55429f5d;
+  --purple-primary:#54429f;
+  --purple-secondary:#765cdf;
+  --red-primary:#e82925;
+  --white-primary:#fffbf9;
+  --yellow-primary:#fcf102;
+  --yellow-secondary:#ffde59;
+}
+/*flexContainer*/
+.flexContainer{
+  margin:0 auto;
+  max-width:1200px;
+  width:80%;
+}
+@media (min-width:240px) and (max-width:900px){
+  .flexContainer{
+    width:90%;
+  }
+}
+/*boxShadow*/
+.boxShadow{
+  box-shadow: 1px 2px 10px var(--box-shadow);
+}
+/*borderRadius*/
+.borderRadius{
+  border-radius: 9px;
+}

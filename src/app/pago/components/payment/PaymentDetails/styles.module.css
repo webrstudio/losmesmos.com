@@ -1,0 +1,21 @@
+.paymentDetailsWrapper{
+    align-items: center;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:2rem;
+}
+.paymentDetailsWrapper p{
+    font-size:1.3rem;
+    font-weight: 400;
+    line-height: 2.5rem;
+    text-align: center;
+}
+.paymentDetailsWrapper a {
+    font-size:1.3rem;
+    color:var(--blue-primary);
+}
+.paymentDetailsWrapper svg{
+    color:var(--blue-primary);
+    font-size:4rem;
+}

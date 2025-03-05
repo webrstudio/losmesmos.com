@@ -1,0 +1,7 @@
+.linkToStoreWrapper{
+    margin-top:8rem;
+    text-align: center;
+}
+.linkToStoreWrapper a{
+    color:var(--white-primary);
+}

@@ -1,0 +1,11 @@
+.titleWrapper{
+    font-size:2rem;
+    font-weight: 400;
+    padding-bottom:8rem;
+    text-align: center;
+}
+@media (min-width:240px) and (max-width:900px){
+    .titleWrapper{
+        font-size: 1.5rem;
+    }
+}

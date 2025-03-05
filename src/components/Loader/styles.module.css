@@ -1,0 +1,33 @@
+.loaderWrapper{
+  align-items: center;
+  display:flex;
+  height:100%;
+  justify-content: center;
+}
+.loaderWrapperFullScreen{
+  height:100vh;
+}
+.loaderSpinner {
+  overflow: hidden;
+  width: 100%;
+  height:90px;
+  border-radius: 50%;
+  justify-content: center;
+  position: relative;
+  transform: translateZ(0);
+  animation: round 1.7s infinite ease;
+}
+.loaderSpinner img{
+  height:100%;
+  object-fit: contain;
+  width:100%;
+}
+
+@keyframes round {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

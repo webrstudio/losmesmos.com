@@ -1,0 +1,63 @@
+export const AddressForm = ()=>{
+    return (
+        <form>
+            <label>Nombre:</label>
+            <input
+                autoComplete="off"
+                name='usuario_nombre'
+                required
+                type='text'
+            />
+            <label>Dirección:</label>
+            <input
+                autoComplete="off"
+                name='usuario_direccion'
+                required
+                type='text'
+            />
+            <label>Código postal:</label>
+            <input
+                autoComplete="off"
+                name='usuario_cp'
+                required
+                type='text'
+            />
+            <label>Estado:</label>
+            <input
+                autoComplete="off"
+                name='usuario_estado'
+                required
+                type='text'
+            />
+            <label>Municipio:</label>
+            <input
+                autoComplete="off"
+                name='usuario_nombre'
+                required
+                type='text'
+            />
+            <label>Colonia:</label>
+            <input
+                autoComplete="off"
+                name='usuario_nombre'
+                required
+                type='text'
+            />
+            <label>Correo electrónico:</label>
+            <input
+                autoComplete="off"
+                name='usuario_email'
+                required
+                type='text'
+            />
+            <label>Teléfono:</label>
+            <input
+                autoComplete="off"
+                name='usuario_telefono'
+                required
+                type='text'
+            />
+            <button>Agregar drección de envío</button>
+        </form>
+    )
+}

@@ -1,0 +1,9 @@
+.containerWrapper{
+    padding: 8rem 0;
+}
+.backgroundPurple{
+   background: var(--purple-primary);
+}
+.backgroundPurple h2{
+    color:var(--white-primary);
+}
