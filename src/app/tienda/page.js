@@ -8,8 +8,8 @@ export default function Store() {
   );
 }
 export const metadata = {
-  title: "MESMOS - TIENDA",
-  description: "Tienda oficial de MESMOS SHOW",
+  title: "MESMOS SHOW- TIENDA",
+  description: "Tienda oficial de LOS MESMOS SHOW",
   icons: {
     icon: "/assets/images/logo.png",
   },

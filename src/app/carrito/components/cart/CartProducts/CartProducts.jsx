@@ -6,7 +6,7 @@ import { useContext, useState, useEffect } from "react";
 
 export const CartProducts = () => {
   const [total, setTotal] = useState(0);
-  const { products, addProduct } = useContext(ShoppingCartContext);
+  const { products, addProduct, deleteProduct } = useContext(ShoppingCartContext);
   useEffect(() => {
     if (products.length > 0) {
       const newTotal = products.reduce(
@@ -21,7 +21,7 @@ export const CartProducts = () => {
   return (
     <div className={`flexContainer ${styles.cartProductsWrapper}`}>
       <p>Productos: {products.length}</p>
-      {products.length === 0 ? (
+      {products && products.length === 0 ? (
         <p>No hay productos para mostrar</p>
       ) : (
         <ul className={styles.productsList}>
@@ -39,9 +39,12 @@ export const CartProducts = () => {
                 >
                   +
                 </button>
-                {/*<button className={styles.productListDeleteButton}>
+                <button
+                  className={styles.productListDeleteButton}
+                  onClick={()=>deleteProduct(index)}
+                >
                     -
-                </button>*/}
+                </button>
               </div>
             </li>
           ))}
