@@ -10,7 +10,7 @@ import {
 
 export const Products = () => {
   const { error, data, isLoading } = useFetch({
-    url: "https://test.webrstudio.com/backend/controllers/products/getAllProducts",
+    url: "https://test.webrstudio.com/backend/controllers/products/getAllProducts/index.php",
   });
   return (
     <Container>

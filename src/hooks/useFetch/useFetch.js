@@ -10,7 +10,6 @@ export const useFetch = ({ url }) => {
     try {
       const response = await axios.get(url);
       if (response.status===200){
-        console.log(data)
         setData(response.data)
         setIsLoading(false)
       };
