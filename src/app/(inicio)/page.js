@@ -4,8 +4,8 @@ export default function Home() {
   return (
     <main>
       <Jumbotron />
-      <SocialLinks />
       <Products />
+      <SocialLinks />
     </main>
   );
 }

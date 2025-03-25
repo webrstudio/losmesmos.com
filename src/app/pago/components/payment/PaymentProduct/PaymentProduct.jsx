@@ -1,7 +1,7 @@
 "use client";
 import { useFetch } from "@/hooks";
 import styles from "./styles.module.css";
-import { PaymentButtons, Loader } from "@/components";
+import { PaymentForm, Loader } from "@/components";
 
 export const PaymentProduct = ({ id }) => {
   const { error, data, isLoading } = useFetch({
@@ -17,7 +17,7 @@ export const PaymentProduct = ({ id }) => {
           <div className={styles.productDetailsWrapper}>
             <h3 className={styles.productName}>{data.producto_nombre}</h3>
             <span>Precio: ${data.producto_precio}.00</span>
-            <PaymentButtons paymentAmount={data.producto_precio} />
+            <PaymentForm paymentAmount={data.producto_precio} />
           </div>
         </div>
       ) : (

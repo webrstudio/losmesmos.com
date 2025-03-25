@@ -2,8 +2,8 @@
 import "./styles/globals.css";
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
-import { ShoppingCartProvider } from "@/contexts";
 import { NavBar, Loader, Footer } from "@/components";
+import { UserProvider, ShoppingCartProvider } from "@/contexts";
 
 export default function RootLayout({ children }) {
   const [loading, setLoading] = useState(true);
@@ -23,19 +23,21 @@ export default function RootLayout({ children }) {
 
   return (
     <ShoppingCartProvider>
-      <html lang="es">
-        <body>
-          {!loading ? (
-            <>
-              <NavBar />
-              {children}
-              <Footer />
-            </>
-          ) : (
-            <Loader fullScreen />
-          )}
-        </body>
-      </html>
+      <UserProvider>
+        <html lang="es">
+          <body>
+            {!loading ? (
+              <>
+                <NavBar />
+                {children}
+                <Footer />
+              </>
+            ) : (
+              <Loader fullScreen />
+            )}
+          </body>
+        </html>
+      </UserProvider>
     </ShoppingCartProvider>
   );
 }
