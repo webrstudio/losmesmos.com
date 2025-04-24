@@ -12,7 +12,7 @@ import {
 
 export const Products = () => {
   const { error, data, isLoading } = useFetch({
-    url: "https://test.webrstudio.com/backend/controllers/products/getAllProducts/index.php",
+    url: "https://test.webrstudio.com/backend/controllers/products/getAllProducts/index.php?marca_id=3",
   });
   return (
     <Container backgroundPurple>

@@ -5,13 +5,18 @@
     width:100%;
 }
 .addressFormWrapper{
-    border:1px solid var(--yellow-secondary);
+    border:1px solid var(--purple-primary);
     border-radius: 9px;
     display:grid;
-    gap:0.5rem;
+    gap:1rem;
     grid-template-columns: repeat(1fr);  
     padding:1rem;  
     width:100%;
+}
+.addressFormWrapper button{
+    background:var(--purple-secondary);
+    color:var(--white-primary);
+    padding:0.5rem;
 }
 .addressFormWrapper label{
     font-weight: 350;
@@ -40,3 +45,14 @@
     animation: l2 1s infinite linear;
   }
   @keyframes l2 {to{transform: rotate(1turn)}}
+
+  @media (min-width:240px) and (max-width:900px){
+    .addressFormWrapper div{
+        align-items: flex-start;
+        flex-direction: column;
+        gap:0.5rem;
+    }
+    .addressFormWrapper input{
+        width:100%;
+    }
+  }

@@ -10,7 +10,7 @@ export const PaymentProduct = ({ id }) => {
   return (
     <>
       {!isLoading ? (
-        <div className={`${styles.paymentDetailsWrapper} flexContainer`}>
+        <div className={`${styles.paymentDetailsWrapper} flexContainer boxShadow`}>
           <figure className={styles.productImage}>
             <img src={data.producto_imagen} />
           </figure>
