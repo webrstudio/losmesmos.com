@@ -19,7 +19,7 @@ export const PaymentButtons = ({ paymentAmount }) => {
           {
             amount: {
               currency_code: "MXN",
-              value: `5.00`,
+              value: `${paymentAmount}`,
             },
           },
         ],

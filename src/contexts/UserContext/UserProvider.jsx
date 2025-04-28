@@ -12,7 +12,6 @@ export const UserProvider = ({ children }) => {
   useEffect(() => {
     setUser(JSON.parse(localStorage.getItem("user")));
   }, []);
-  console.log(user)
   return (
     <UserContext.Provider value={{ user, addUser }}>
       {children}

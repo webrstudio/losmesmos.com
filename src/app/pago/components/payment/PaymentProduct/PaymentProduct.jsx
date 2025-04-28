@@ -16,7 +16,6 @@ export const PaymentProduct = ({ id }) => {
           </figure>
           <div className={styles.productDetailsWrapper}>
             <h3 className={styles.productName}>{data.producto_nombre}</h3>
-            <span>Precio: ${data.producto_precio}.00</span>
             <PaymentForm paymentAmount={data.producto_precio} />
           </div>
         </div>

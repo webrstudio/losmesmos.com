@@ -52,7 +52,6 @@ export const CartProducts = () => {
             </li>
           ))}
           <div className={styles.paymentButtons}>
-            <span>Total: ${total}.00</span>
             <PaymentForm paymentAmount={total} />
           </div>
         </ul>
