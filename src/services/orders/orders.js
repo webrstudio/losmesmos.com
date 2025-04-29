@@ -1,9 +1,30 @@
 import axios from "axios";
 import { origin, headers, packageInfo } from "./consts";
 
-export const creatOrder = async () => {
+export const creatOrder = async (uuid) => {
   try {
-  } catch (error) {}
+    const response = await axios.post(
+      `${process.env.NEXT_PUBLIC_ENVIA_TODO_API}Api/create_order`,
+      {
+        order: {
+          type: "create_order",
+          data: {
+            uuid: uuid,
+            detail: {
+              provider_id: "9",
+              provider_service_id: "11",
+              insurance: false,
+            },
+          },
+        },
+      },
+      headers
+    );
+    const data = response.data;
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const getServiceInfo = async (destination) => {
@@ -81,8 +102,8 @@ export const getServicePrice = async (uuid) => {
       },
       headers
     );
-    if(response.status===200){
-      return response.data
+    if (response.status === 200) {
+      return response.data;
     }
   } catch (error) {}
 };

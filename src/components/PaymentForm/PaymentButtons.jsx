@@ -1,14 +1,15 @@
 "use client";
 import { useState } from "react";
+import { creatOrder } from "@/services";
 import { useRouter } from "next/navigation";
 import { PaymentLoader } from "./PaymentLoader";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
-export const PaymentButtons = ({ paymentAmount }) => {
+export const PaymentButtons = ({ paymentAmount, uuid }) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const paypalOptions = {
-    clientId: `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`,
+    clientId: `${process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_CLIENT_ID}`,
     currency: "MXN",
     intent: "capture",
   };
@@ -19,7 +20,7 @@ export const PaymentButtons = ({ paymentAmount }) => {
           {
             amount: {
               currency_code: "MXN",
-              value: `${paymentAmount}`,
+              value: `5.00`,
             },
           },
         ],
@@ -35,6 +36,8 @@ export const PaymentButtons = ({ paymentAmount }) => {
       console.log(details.purchase_units);
       setIsLoading(true)
       if (details.status === "COMPLETED") {
+        const order = await creatOrder(uuid)
+        console.log(order)
         router.push("/pago/exitoso");
       }
     } catch (error) {

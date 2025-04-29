@@ -3,9 +3,9 @@ import Swal from "sweetalert2";
 import styles from "./styles.module.css";
 import { UserContext } from "@/contexts";
 import { getServiceInfo } from "@/services";
-import { useContext, useEffect, useState } from "react";
 import { PaymentLoader } from "./PaymentLoader";
 import { PaymentButtons } from "./PaymentButtons";
+import { useContext, useEffect, useState } from "react";
 
 export const PaymentForm = ({ paymentAmount }) => {
   const { user, addUser } = useContext(UserContext);
@@ -34,12 +34,10 @@ export const PaymentForm = ({ paymentAmount }) => {
         const updatedUser = {
           ...formData,
           guide_amount: data.data.rates?.[1]?.detail_charges?.[2]?.amount || 0,
-          uuid: data.data.transaction?.uuid || '',
+          uuid: data.data.transaction?.uuid || "",
         };
 
         addUser(updatedUser);
-        console.log(user)
-
         Swal.fire({
           title: "Dirección de envío añadida",
           icon: "success",
@@ -49,7 +47,7 @@ export const PaymentForm = ({ paymentAmount }) => {
         });
       }
     } catch (error) {
-      console.error('Error al enviar el formulario:', error);
+      console.error("Error al enviar el formulario:", error);
     } finally {
       setIsLoading(false);
     }
@@ -80,12 +78,20 @@ export const PaymentForm = ({ paymentAmount }) => {
             {[
               { label: "Nombre", name: "usuario_nombre", type: "text" },
               { label: "Calle", name: "usuario_calle", type: "text" },
-              { label: "Número exterior", name: "usuario_numero_exterior", type: "text" },
+              {
+                label: "Número exterior",
+                name: "usuario_numero_exterior",
+                type: "text",
+              },
               { label: "Código postal", name: "usuario_cp", type: "text" },
               { label: "Colonia", name: "usuario_colonia", type: "text" },
               { label: "Municipio", name: "usuario_municipio", type: "text" },
               { label: "Estado", name: "usuario_estado", type: "text" },
-              { label: "Correo electrónico", name: "usuario_email", type: "email" },
+              {
+                label: "Correo electrónico",
+                name: "usuario_email",
+                type: "email",
+              },
               { label: "Teléfono", name: "usuario_telefono", type: "number" },
               { label: "Referencia", name: "usuario_referencia", type: "text" },
             ].map((field) => (
@@ -95,7 +101,7 @@ export const PaymentForm = ({ paymentAmount }) => {
                   autoComplete="off"
                   name={field.name}
                   type={field.type}
-                  value={formData?.[field.name] || ''}
+                  value={formData?.[field.name] || ""}
                   onChange={onChange}
                   required
                 />
@@ -106,7 +112,10 @@ export const PaymentForm = ({ paymentAmount }) => {
           </form>
 
           {user && (
-            <PaymentButtons paymentAmount={newTotal.toString()} />
+            <PaymentButtons
+              paymentAmount={!newTotal ? "" : newTotal.toString()}
+              uuid={user.uuid}
+            />
           )}
         </div>
       )}
