@@ -7,7 +7,7 @@ import { PaymentLoader } from "./PaymentLoader";
 import { PaymentButtons } from "./PaymentButtons";
 import { useContext, useEffect, useState } from "react";
 
-export const PaymentForm = ({ paymentAmount }) => {
+export const PaymentForm = ({ paymentAmount, paymentCart }) => {
   const { user, addUser } = useContext(UserContext);
   const [formData, setFormData] = useState(user || {});
   const [isLoading, setIsLoading] = useState(false);
@@ -115,6 +115,7 @@ export const PaymentForm = ({ paymentAmount }) => {
             <PaymentButtons
               paymentAmount={!newTotal ? "" : newTotal.toString()}
               uuid={user.uuid}
+              paymentDetails={{...user, paymentCart}}
             />
           )}
         </div>

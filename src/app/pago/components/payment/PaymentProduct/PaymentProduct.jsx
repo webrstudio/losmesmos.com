@@ -5,7 +5,7 @@ import { PaymentForm, Loader } from "@/components";
 
 export const PaymentProduct = ({ id }) => {
   const { error, data, isLoading } = useFetch({
-    url: `https://test.webrstudio.com/backend/controllers/products/getProductById/index.php?id=${id}`,
+    url: `${process.env.NEXT_PUBLIC_LOCAL_API}products/getProductById/index.php?id=${id}`,
   });
   return (
     <>
@@ -16,7 +16,10 @@ export const PaymentProduct = ({ id }) => {
           </figure>
           <div className={styles.productDetailsWrapper}>
             <h3 className={styles.productName}>{data.producto_nombre}</h3>
-            <PaymentForm paymentAmount={data.producto_precio} />
+            <PaymentForm
+              paymentAmount={data.producto_precio}
+              paymentCart={[data]}  
+            />
           </div>
         </div>
       ) : (

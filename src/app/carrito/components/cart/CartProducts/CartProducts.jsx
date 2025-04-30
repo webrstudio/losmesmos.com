@@ -52,7 +52,10 @@ export const CartProducts = () => {
             </li>
           ))}
           <div className={styles.paymentButtons}>
-            <PaymentForm paymentAmount={total} />
+            <PaymentForm
+              paymentAmount={total}
+              paymentCart={products}
+            />
           </div>
         </ul>
       )}

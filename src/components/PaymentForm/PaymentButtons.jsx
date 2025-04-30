@@ -1,11 +1,11 @@
 "use client";
 import { useState } from "react";
-import { creatOrder } from "@/services";
 import { useRouter } from "next/navigation";
 import { PaymentLoader } from "./PaymentLoader";
+import { createDeliveryOrder, createOrder } from "@/services";
 import { PayPalButtons, PayPalScriptProvider } from "@paypal/react-paypal-js";
 
-export const PaymentButtons = ({ paymentAmount, uuid }) => {
+export const PaymentButtons = ({ paymentAmount, uuid, paymentDetails }) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const paypalOptions = {
@@ -33,10 +33,10 @@ export const PaymentButtons = ({ paymentAmount, uuid }) => {
   const onApproveOrder = async (data, actions) => {
     try {
       const details = await actions.order.capture();
-      console.log(details.purchase_units);
       setIsLoading(true)
       if (details.status === "COMPLETED") {
-        const order = await creatOrder(uuid)
+        const deliveryOrder = await createDeliveryOrder(uuid)
+        const order = await createOrder(paymentDetails)
         console.log(order)
         router.push("/pago/exitoso");
       }
