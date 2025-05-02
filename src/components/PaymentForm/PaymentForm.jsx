@@ -39,9 +39,9 @@ export const PaymentForm = ({ paymentAmount, paymentCart }) => {
 
         addUser(updatedUser);
         Swal.fire({
-          title: "Dirección de envío añadida",
+          title: "Dirección de envío y datos personales guardados",
           icon: "success",
-          timer: 1000,
+          showCloseButton: true,
           position: "top-end",
           showConfirmButton: false,
         });
@@ -63,17 +63,26 @@ export const PaymentForm = ({ paymentAmount, paymentCart }) => {
         <PaymentLoader />
       ) : (
         <div className={styles.paymentFormWrapper}>
-          <span>
-            Total con envío:{" "}
-            {newTotal !== null
-              ? `$${newTotal} MXN`
-              : "Por favor, complete el formulario"}
-          </span>
+          {!user ? null : (
+            <span>
+              Total con envío <strong>${newTotal}</strong>
+            </span>
+          )}
 
           <span>
-            {user ? "Dirección de envío:" : "Añade una dirección de envío:"}
+            {user ? (
+              <>
+                Dirección de envío: {""}
+                <strong>
+                  C. {user.usuario_calle + user.usuario_numero_exterior},{""}{" "}
+                  C.P. {user.usuario_cp},{""} Col. {user.usuario_colonia},{""}{" "}
+                  {user.usuario_municipio},{""} {user.usuario_estado}
+                </strong>
+              </>
+            ) : (
+              "Añade una dirección de envío:"
+            )}
           </span>
-
           <form className={styles.addressFormWrapper} onSubmit={onSubmit}>
             {[
               { label: "Nombre", name: "usuario_nombre", type: "text" },
@@ -110,12 +119,18 @@ export const PaymentForm = ({ paymentAmount, paymentCart }) => {
 
             <button type="submit">Guardar dirección de envío</button>
           </form>
-
+          {!user ? null : (
+            <strong>
+              Estamos en nuestras primeras etapas de operación, por lo que los
+              tiempos de envío podrían extenderse ligeramente. Agradecemos su
+              paciencia y confianza.
+            </strong>
+          )}
           {user && (
             <PaymentButtons
               paymentAmount={!newTotal ? "" : newTotal.toString()}
               uuid={user.uuid}
-              paymentDetails={{...user, paymentCart}}
+              paymentDetails={{ ...user, paymentCart }}
             />
           )}
         </div>

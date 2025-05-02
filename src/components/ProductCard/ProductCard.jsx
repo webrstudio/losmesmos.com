@@ -27,6 +27,7 @@ export const ProductCard = ({ product }) => {
           </figure>
           <span>{product.producto_nombre}</span>
           <span>${product.producto_precio} mxn</span>
+          <span>Únicamente <strong>{product.producto_inventario}</strong> piezas disponibles</span>
           <Link
             href={`/pago/${product.producto_id}`}
             className={styles.productPaymentButton}

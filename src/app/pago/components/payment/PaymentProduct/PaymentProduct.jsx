@@ -16,6 +16,7 @@ export const PaymentProduct = ({ id }) => {
           </figure>
           <div className={styles.productDetailsWrapper}>
             <h3 className={styles.productName}>{data.producto_nombre}</h3>
+            <span>Únicamente <strong>{data.producto_inventario}</strong> piezas disponibles</span>
             <PaymentForm
               paymentAmount={data.producto_precio}
               paymentCart={[data]}  
