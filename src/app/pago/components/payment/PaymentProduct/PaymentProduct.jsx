@@ -10,17 +10,28 @@ export const PaymentProduct = ({ id }) => {
   return (
     <>
       {!isLoading ? (
-        <div className={`${styles.paymentDetailsWrapper} flexContainer boxShadow`}>
+        <div
+          className={`${styles.paymentDetailsWrapper} flexContainer boxShadow`}
+        >
           <figure className={styles.productImage}>
             <img src={data.producto_imagen} />
           </figure>
           <div className={styles.productDetailsWrapper}>
             <h3 className={styles.productName}>{data.producto_nombre}</h3>
-            <span>Únicamente <strong>{data.producto_inventario}</strong> piezas disponibles</span>
-            <PaymentForm
-              paymentAmount={data.producto_precio}
-              paymentCart={[data]}  
-            />
+            {data.producto_inventario !== 0 ? (
+              <>
+                <span>
+                  Únicamente <strong>{data.producto_inventario}</strong> piezas
+                  disponibles
+                </span>
+                <PaymentForm
+                  paymentAmount={data.producto_precio}
+                  paymentCart={[data]}
+                />
+              </>
+            ) : (
+              <strong>Sin piezas disponibles</strong>
+            )}
           </div>
         </div>
       ) : (

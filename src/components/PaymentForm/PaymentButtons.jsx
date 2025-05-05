@@ -9,7 +9,7 @@ export const PaymentButtons = ({ paymentAmount, uuid, paymentDetails }) => {
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
   const paypalOptions = {
-    clientId: `${process.env.NEXT_PUBLIC_PAYPAL_SANDBOX_CLIENT_ID}`,
+    clientId: `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}`,
     currency: "MXN",
     intent: "capture",
   };
