@@ -1,8 +1,8 @@
 "use client";
 import Link from "next/link";
-import { useState, useContext } from "react";
 import styles from "./styles.module.css";
 import { IoMdClose } from "react-icons/io";
+import { useState, useContext } from "react";
 import { HiMiniBars3 } from "react-icons/hi2";
 import { ShoppingCartContext } from "@/contexts";
 import { LiaShoppingCartSolid } from "react-icons/lia";
@@ -41,16 +41,6 @@ export const NavBar = () => {
             onClick={activeMenu}
             >
               Tienda
-            </Link>
-          </li>
-          <li>
-            <Link
-            href="/carrito"
-            onClick={activeMenu}
-            className={styles.navShoppingCart}
-            >
-              <LiaShoppingCartSolid/>
-              <span>{products.length}</span>
             </Link>
           </li>
         </ul>

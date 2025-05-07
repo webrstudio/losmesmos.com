@@ -20,7 +20,7 @@ export const PaymentButtons = ({ paymentAmount, uuid, paymentDetails }) => {
           {
             amount: {
               currency_code: "MXN",
-              value: `5.00`,
+              value: `${paymentAmount}`,
             },
           },
         ],

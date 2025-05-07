@@ -22,9 +22,9 @@ export async function generateStaticParams() {
 }
 
 export const metadata = {
-    title: "KROLLOSHOW - PAGO",
-    description: "KROLLOSHOW",
+    title: "MESMOS SHOW - PAGO",
+    description: "MESMOS SHOW - PAGAR PRODUCTO",
     icons: {
-      icon: "/assets/images/krollo-logo.jpg",
+      icon: "/assets/images/logo.png",
     },
   };

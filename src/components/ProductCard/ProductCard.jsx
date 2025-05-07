@@ -29,22 +29,18 @@ export const ProductCard = ({ product }) => {
           {product.producto_inventario !== 0 ? (
             <>
               <span>
-                Únicamente <strong>{product.producto_inventario}</strong> pieza(s)
-                disponibles
+                Únicamente <strong>{product.producto_inventario}</strong>{" "}
+                pieza(s) disponibles
               </span>
-              <span>Precio: <strong>${product.producto_precio} mxn</strong></span>
+              <span>
+                Precio: <strong>${product.producto_precio} mxn</strong>
+              </span>
               <Link
                 href={`/pago/${product.producto_id}`}
                 className={styles.productPaymentButton}
               >
                 Comprar ahora
               </Link>
-              <button
-                className={styles.productShoppingCartButton}
-                onClick={showModal}
-              >
-                <LiaShoppingCartSolid />
-              </button>
             </>
           ) : (
             <strong>Sin piezas disponibles</strong>
