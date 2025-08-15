@@ -38,16 +38,16 @@
     align-items: center;
     display: flex;
     justify-content: center;
-    margin:0 auto;
-    width:40%;
+    width:100%;
 }
 .paymentLoaderSpinner {
-    width: 50px;
-    aspect-ratio: 1;
-    border-radius: 50%;
-    border: 8px solid var(--box-shadow);
-    border-right-color: var(--purple-secondary);
     animation: l2 1s infinite linear;
+    aspect-ratio: 1;
+    border: 8px solid var(--box-shadow);
+    border-radius: 50%;
+    border-right-color: var(--purple-secondary);
+    margin:0 auto;
+    width: 50px;
   }
   @keyframes l2 {to{transform: rotate(1turn)}}
 

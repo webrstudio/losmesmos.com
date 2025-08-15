@@ -1,6 +1,6 @@
 import styles from './styles.module.css'
-export const PaymentLoader = ()=> (
+export const PaymentLoader = () => (
     <div className={styles.paymentLoaderWrapper}>
-        <div className={styles.paymentLoaderSpinner}></div>
+        <span className={styles.paymentLoaderSpinner}></span>
     </div>
 )
