@@ -3,14 +3,19 @@ import Swal from "sweetalert2";
 import styles from "./styles.module.css";
 import { UserContext } from "@/contexts";
 import { getServiceInfo } from "@/services";
+import { loadStripe } from "@stripe/stripe-js";
 import { PaymentLoader } from "./PaymentLoader";
 import { PaymentButtons } from "./PaymentButtons";
+import { Elements } from "@stripe/react-stripe-js";
 import { useContext, useEffect, useState } from "react";
 
 export const PaymentForm = ({ paymentAmount, paymentCart }) => {
   const { user, addUser } = useContext(UserContext);
   const [formData, setFormData] = useState(user || {});
   const [isLoading, setIsLoading] = useState(false);
+  const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  );
 
   useEffect(() => {
     if (user) setFormData(user);
@@ -117,7 +122,7 @@ export const PaymentForm = ({ paymentAmount, paymentCart }) => {
               </div>
             ))}
 
-            <button type="submit">Guardar dirección de envío</button>
+            <button type="submit" className={styles.paymentFormButton}>Guardar dirección de envío</button>
           </form>
           {!user ? null : (
             <strong>
@@ -127,11 +132,13 @@ export const PaymentForm = ({ paymentAmount, paymentCart }) => {
             </strong>
           )}
           {user && (
-            <PaymentButtons
-              paymentAmount={!newTotal ? "" : newTotal.toString()}
-              uuid={user.uuid}
-              paymentDetails={{ ...user, paymentCart }}
-            />
+            <Elements stripe={stripePromise}>
+              <PaymentButtons
+                paymentAmount={!newTotal ? "" : Math.round((newTotal)*100)}
+                uuid={user.uuid}
+                paymentDetails={{ ...user, paymentCart }}
+              />
+            </Elements>
           )}
         </div>
       )}

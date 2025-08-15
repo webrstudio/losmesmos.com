@@ -13,10 +13,14 @@
     padding:1rem;  
     width:100%;
 }
-.addressFormWrapper button{
+.paymentFormButton{
+    border:none;
+    border-radius: 9px;
     background:var(--purple-secondary);
     color:var(--white-primary);
+    cursor:pointer;
     padding:0.5rem;
+    width:100%;
 }
 .addressFormWrapper label{
     font-weight: 350;

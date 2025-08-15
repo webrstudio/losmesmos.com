@@ -1,13 +1,13 @@
-import { Container, Title } from "@/components"
-import { PaymentProduct } from "../components/payment"
+import { Container, Title } from "@/components";
+import { PaymentProduct } from "../components/payment";
 
 export default function Payment({ params }) {
   return (
     <Container>
-      <Title title='Pagar producto'/>
-      <PaymentProduct id={params.id}/>
+      <Title title="Pagar producto" />
+      <PaymentProduct id={params.id} />
     </Container>
-  )
+  );
 }
 
 export async function generateStaticParams() {
@@ -24,9 +24,9 @@ export async function generateStaticParams() {
 }
 
 export const metadata = {
-    title: "MESMOS SHOW - PAGO",
-    description: "MESMOS SHOW - PAGAR PRODUCTO",
-    icons: {
-      icon: "/assets/images/logo.png",
-    },
-  };
+  title: "MESMOS SHOW - PAGO",
+  description: "MESMOS SHOW - PAGAR PRODUCTO",
+  icons: {
+    icon: "/assets/images/logo.png",
+  },
+};
