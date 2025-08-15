@@ -1,7 +1,8 @@
 "use client";
 import axios from "axios";
-import styles from "./styles.module.css";
 import { useState } from "react";
+import styles from "./styles.module.css";
+import { createOrder } from "@/services";
 import { useRouter } from "next/navigation";
 import { PaymentLoader } from "./PaymentLoader";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
@@ -11,8 +12,7 @@ export const PaymentButtons = ({ paymentAmount, uuid, paymentDetails }) => {
   const router = useRouter();
   const stripe = useStripe();
   const elements = useElements();
-  /*const deliveryOrder = await createDeliveryOrder(uuid)
-  const order = await createOrder(paymentDetails)*/
+  /*const deliveryOrder = await createDeliveryOrder(uuid)*/
   const getClientSecret = async () => {
     try {
       const response = await axios.post(
@@ -33,19 +33,16 @@ export const PaymentButtons = ({ paymentAmount, uuid, paymentDetails }) => {
 
       return response.data.clientSecret;
     } catch (error) {
-      console.error(
-        "Error al obtener clientSecret:",
-        error.response?.data?.error || error.message
-      );
       return null;
     }
   };
 
   const onSubmit = async (evt) => {
     evt.preventDefault();
-
+    setIsLoading(true)
     if (!stripe || !elements) {
       console.warn("Stripe.js aún no está listo");
+      setIsLoading(false)
       return;
     }
 
@@ -53,7 +50,7 @@ export const PaymentButtons = ({ paymentAmount, uuid, paymentDetails }) => {
     const clientSecret = await getClientSecret();
 
     if (!clientSecret) {
-      console.error("No se pudo obtener clientSecret, abortando pago");
+      setIsLoading(false)
       return;
     }
 
@@ -63,35 +60,29 @@ export const PaymentButtons = ({ paymentAmount, uuid, paymentDetails }) => {
       });
 
       if (paymentResult.error) {
-        console.error(
-          "Error al confirmar el pago:",
-          paymentResult.error.message
-        );
+        setIsLoading(false)
         return;
       }
 
       if (paymentResult.paymentIntent?.status === "succeeded") {
-        console.log("Pago exitoso!");
+        const order = await createOrder(paymentDetails)
+        setIsLoading(false)
+        router.push('/pago/exitoso')
       } else {
-        console.warn(
-          "Pago no completado, estado:",
-          paymentResult.paymentIntent?.status
-        );
+        setIsLoading(false)
       }
     } catch (error) {
-      console.error("Error inesperado en confirmCardPayment:", error.message);
+      setIsLoading(false)
     }
   };
   return (
-    <>
+    <form className={`${styles.addressFormWrapper}`} onSubmit={onSubmit}>
+      <CardElement />
       {!isLoading ? (
-        <form className={`${styles.addressFormWrapper}`} onSubmit={onSubmit}>
-          <CardElement />
-          <button className={styles.paymentFormButton}>Pagar</button>
-        </form>
+        <button className={styles.paymentFormButton}>Pagar</button>
       ) : (
         <PaymentLoader />
       )}
-    </>
+    </form>
   );
 };
