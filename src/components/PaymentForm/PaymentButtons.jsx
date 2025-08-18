@@ -6,14 +6,14 @@ import { PaymentLoader } from "./PaymentLoader";
 
 export const PaymentButtons = ({ paymentAmount, paymentDetails }) => {
   const [isLoading, setIsLoading] = useState(false);
+  console.log(paymentDetails)
   const handleCheckout = async () => {
     setIsLoading(true)
     try {
       const response = await axios.post(`${process.env.NEXT_PUBLIC_LOCAL_API}/orders/checkoutStripeSession/index.php`, {
-        paymentAmount,
-        usuario_carrito: paymentDetails.paymentCart,
-        usuario_nombre: paymentDetails.usuario_nombre,
-        usuario_email: paymentDetails.usuario_email
+        ...paymentDetails,
+        usuario_carrito:paymentDetails.paymentCart,
+        paymentAmount
       });
       console.log(response)
       if (response.data.url) {
