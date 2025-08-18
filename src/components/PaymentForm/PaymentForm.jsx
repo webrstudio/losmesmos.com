@@ -134,7 +134,7 @@ export const PaymentForm = ({ paymentAmount, paymentCart }) => {
           {user && (
             <Elements stripe={stripePromise}>
               <PaymentButtons
-                paymentAmount={!newTotal ? "" : Math.round((newTotal)*100)}
+                paymentAmount={!newTotal ? "" : newTotal}
                 uuid={user.uuid}
                 paymentDetails={{ ...user, paymentCart }}
               />
