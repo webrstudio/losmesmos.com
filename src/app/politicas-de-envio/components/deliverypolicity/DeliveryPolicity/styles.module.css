@@ -1,0 +1,12 @@
+.deliveryPrivacity{
+    display:flex;
+    flex-direction: column;
+    gap:2rem;
+    line-height: 2rem;
+}
+.titleList{
+    color:var(--purple-primary);
+    font-weight: 900;
+    list-style: none;
+    margin-bottom:1rem;
+}

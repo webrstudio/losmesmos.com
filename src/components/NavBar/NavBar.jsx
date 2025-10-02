@@ -43,6 +43,14 @@ export const NavBar = () => {
               Tienda
             </Link>
           </li>
+          <li>
+            <Link
+            href="/politicas-de-envio"
+            onClick={activeMenu}
+            >
+              Políticas de envío
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>
