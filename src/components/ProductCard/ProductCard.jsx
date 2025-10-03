@@ -41,6 +41,9 @@ export const ProductCard = ({ product }) => {
               >
                 Comprar ahora
               </Link>
+              <button className={styles.productShoppingCartButton} onClick={showModal}>
+                <LiaShoppingCartSolid />
+              </button>
             </>
           ) : (
             <strong>Sin piezas disponibles</strong>

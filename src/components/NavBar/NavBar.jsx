@@ -51,6 +51,15 @@ export const NavBar = () => {
               Políticas de envío
             </Link>
           </li>
+          <li>
+            <Link
+            href="/carrito"
+            onClick={activeMenu}
+            className={styles.navShoppingCart}
+            >
+              <LiaShoppingCartSolid /> <span>{products.length}</span>
+            </Link>
+          </li>
         </ul>
       </nav>
     </header>

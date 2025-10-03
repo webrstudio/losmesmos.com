@@ -36,12 +36,14 @@ export const CartProducts = () => {
               <span>{product.producto_nombre}</span>
               <span>Precio: ${product.producto_precio}.00</span>
               <div className={styles.productsListButtons}>
-                <button
-                  className={styles.productListAddButton}
-                  onClick={() => addProduct(product)}
-                >
-                  <GoPlusCircle />
-                </button>
+                {products.length === product.producto_inventario ? null : (
+                  <button
+                    className={styles.productListAddButton}
+                    onClick={() => addProduct(product)}
+                  >
+                    <GoPlusCircle />
+                  </button>
+                )}
                 <button
                   className={styles.productListDeleteButton}
                   onClick={() => deleteProduct(index)}
@@ -52,10 +54,7 @@ export const CartProducts = () => {
             </li>
           ))}
           <div className={styles.paymentButtons}>
-            <PaymentForm
-              paymentAmount={total}
-              paymentCart={products}
-            />
+            <PaymentForm paymentAmount={total} paymentCart={products} />
           </div>
         </ul>
       )}
